@@ -1,0 +1,16 @@
+ HashMap<Integer, Integer> freq = new HashMap<>();
+        long count = 0;
+        int xorr = 0;
+
+        for (int num : arr) {
+            xorr ^= num;
+            if (xorr == k) {
+                count++;
+            }
+            if (freq.containsKey(xorr ^ k)) {
+                count += freq.get(xorr ^ k);
+            }
+            freq.put(xorr, freq.getOrDefault(xorr, 0) + 1);
+        }
+
+        return count;
