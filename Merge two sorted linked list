@@ -1,0 +1,51 @@
+class Solution {
+    Node sortedMerge(Node head1, Node head2) {
+        // code here
+         if(head1==null)
+         {
+             return head2;
+         }
+         else if(head2==null)
+         {
+             return head1;
+         }
+         Node head=null;
+         Node tail=null;
+         while(head1!=null && head2!=null)
+         {
+             Node temp=null;
+             if(head1.data<head2.data)
+             {
+                 temp=head1;
+                 head1=head1.next;
+             }
+             else
+             {
+                 temp=head2;
+                 head2=head2.next;
+             }
+             temp.next=null;
+             if(head==null)
+             {
+                 head=tail=temp;
+             }
+             else
+             
+             {
+                 tail.next=temp;
+                 tail=temp;
+             }
+         }
+         if(head1!=null)
+         {
+             tail.next=head1;
+         }
+         else if(head2!=null)
+         {
+             tail.next=head2;
+         }
+         return head;
+    }
+}
+
+
